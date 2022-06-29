@@ -1,4 +1,4 @@
-package com.kodilla.ecommercee.controller;
+package com.kodilla.ecommercee.domain.controller;
 
 import com.kodilla.ecommercee.domain.OrderDto;
 import lombok.RequiredArgsConstructor;
@@ -10,7 +10,7 @@ import java.util.List;
 
 @RestController
 @RequestMapping("/v1/orders")
-//@RequiredArgsConstructor
+@RequiredArgsConstructor
 public class OrderController {
 
     @GetMapping
@@ -30,12 +30,11 @@ public class OrderController {
 
     @PutMapping
     public OrderDto updateOrder(OrderDto orderDto) {
-        return new OrderDto(1L, LocalDateTime.of(2022, 6, 6, 6, 6));
+        return new OrderDto(2L, LocalDateTime.of(2022, 6, 6, 6, 7));
     }
 
     @PostMapping
     public void createOrder(OrderDto orderDto) {
 
     }
-
 }
