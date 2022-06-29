@@ -2,6 +2,8 @@ package com.kodilla.ecommercee.controller;
 
 import com.kodilla.ecommercee.domain.OrderDto;
 import lombok.RequiredArgsConstructor;
+import org.springframework.http.MediaType;
+import org.springframework.http.ResponseEntity;
 import org.springframework.web.bind.annotation.*;
 
 import java.time.LocalDateTime;
@@ -23,18 +25,18 @@ public class OrderController {
         return new OrderDto(1L, LocalDateTime.of(2022, 6, 6, 6, 6));
     }
 
-    @DeleteMapping
-    public void deleteOrder(Long orderId) {
-
+    @DeleteMapping(value = "{orderId}")
+    public ResponseEntity<Void> deleteOrder(@PathVariable Long orderId) {
+        return ResponseEntity.ok().build();
     }
 
-    @PutMapping
-    public OrderDto updateOrder(OrderDto orderDto) {
-        return new OrderDto(2L, LocalDateTime.of(2022, 6, 6, 6, 7));
+    @PutMapping(consumes = MediaType.APPLICATION_JSON_VALUE)
+    public ResponseEntity<OrderDto> updateOrder(@RequestBody OrderDto orderDto) {
+        return ResponseEntity.ok(new OrderDto(1L, LocalDateTime.of(2022, 6, 6, 6, 7)));
     }
 
-    @PostMapping
-    public void createOrder(OrderDto orderDto) {
-
+    @PostMapping(consumes = MediaType.APPLICATION_JSON_VALUE)
+    public ResponseEntity<Void> createOrder(@RequestBody OrderDto orderDto) {
+        return ResponseEntity.ok().build();
     }
 }
