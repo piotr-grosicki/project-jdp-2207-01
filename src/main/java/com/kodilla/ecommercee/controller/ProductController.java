@@ -1,4 +1,4 @@
-package com.kodilla.ecommercee.domain.controller;
+package com.kodilla.ecommercee.controller;
 
 public class ProductController {
 }

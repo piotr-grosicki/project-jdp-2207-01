@@ -1,4 +1,4 @@
-package com.kodilla.ecommercee.domain.controller;
+package com.kodilla.ecommercee.controller;
 
 import com.kodilla.ecommercee.domain.OrderDto;
 import lombok.RequiredArgsConstructor;

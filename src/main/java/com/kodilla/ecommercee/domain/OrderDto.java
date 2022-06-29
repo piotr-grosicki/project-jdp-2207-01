@@ -11,6 +11,4 @@ import java.time.LocalDateTime;
 public class OrderDto {
     private Long orderId;
     private LocalDateTime created;
-    //user id bigint
-    //cart id bigint
 }
