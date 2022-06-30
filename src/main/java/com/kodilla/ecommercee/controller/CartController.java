@@ -14,9 +14,9 @@ import static org.springframework.http.MediaType.APPLICATION_JSON_VALUE;
 @RequestMapping("/v1/cart")
 public class CartController {
 
-    @GetMapping(value = "getNewCart")
-    public CartDto getNewCart(@RequestParam Long userId) {
-        return new CartDto(1L, Arrays.asList("Product1", "Product2"), 2L);
+    @GetMapping
+    public List <CartDto> getNewCart() {
+        return new ArrayList<>();
     }
 
     @GetMapping(value = "getProductsFromCart")
@@ -26,7 +26,7 @@ public class CartController {
 
       @PostMapping(value = "addProductToCart", consumes = APPLICATION_JSON_VALUE)
     public CartDto addProductToCart(@RequestParam Long cartId, @RequestParam Long productId) {
-        return new CartDto();
+        return new CartDto(2L, Arrays.asList("Product1"), 1L);
     }
 
     @DeleteMapping(value = "deleteProductFromCart")
