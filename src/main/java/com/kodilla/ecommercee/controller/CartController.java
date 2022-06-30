@@ -20,17 +20,17 @@ public class CartController {
     }
 
     @GetMapping(value = "getProductsFromCart")
-    public List <CartDto> getProductsFromCart(@RequestParam Long cartId) {
+    public List <CartDto> getProductsFromCart(@PathVariable Long cartId) {
         return new ArrayList<>();
     }
 
       @PostMapping(value = "addProductToCart", consumes = APPLICATION_JSON_VALUE)
-    public CartDto addProductToCart(@RequestParam Long cartId, @RequestParam Long productId) {
+    public CartDto addProductToCart(@PathVariable Long cartId, @PathVariable Long productId) {
         return new CartDto(2L, Arrays.asList("Product1"), 1L);
     }
 
     @DeleteMapping(value = "deleteProductFromCart")
-    public ResponseEntity<Void> deleteChosenProductFromCart(@RequestParam Long cartId, @RequestParam Long productId) {
+    public ResponseEntity<Void> deleteChosenProductFromCart(@PathVariable Long cartId, @PathVariable Long productId) {
                    return ResponseEntity.ok().build();
         }
 
