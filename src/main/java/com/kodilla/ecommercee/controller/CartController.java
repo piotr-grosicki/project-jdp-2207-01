@@ -1,4 +1,42 @@
 package com.kodilla.ecommercee.controller;
 
+import com.kodilla.ecommercee.domain.CartDto;
+import org.springframework.http.ResponseEntity;
+import org.springframework.web.bind.annotation.*;
+
+import java.util.ArrayList;
+import java.util.Arrays;
+import java.util.List;
+
+import static org.springframework.http.MediaType.APPLICATION_JSON_VALUE;
+
+@RestController
+@RequestMapping("/v1/cart")
 public class CartController {
+
+    @GetMapping(value = "getNewCart")
+    public CartDto getNewCart(@RequestParam Long userId) {
+        return new CartDto(1L, Arrays.asList("Product1", "Product2"), 2L);
+    }
+
+    @GetMapping(value = "getProductsFromCart")
+    public List <CartDto> getProductsFromCart(@RequestParam Long cartId) {
+        return new ArrayList<>();
+    }
+
+      @PostMapping(value = "addProductToCart", consumes = APPLICATION_JSON_VALUE)
+    public CartDto addProductToCart(@RequestParam Long cartId, @RequestParam Long productId) {
+        return new CartDto();
+    }
+
+    @DeleteMapping(value = "deleteProductFromCart")
+    public ResponseEntity<Void> deleteChosenProductFromCart(@RequestParam Long cartId, @RequestParam Long productId) {
+                   return ResponseEntity.ok().build();
+        }
+
+    @PostMapping(value = "addNewOrder", consumes = APPLICATION_JSON_VALUE)
+    public ResponseEntity<Void> addNewOrder(@RequestBody CartDto cartDto) {
+        return ResponseEntity.ok().build();    }
+
+
 }
