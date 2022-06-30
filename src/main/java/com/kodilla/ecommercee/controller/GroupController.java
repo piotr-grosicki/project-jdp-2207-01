@@ -25,7 +25,7 @@ public class GroupController {
     }
 
     @PutMapping(value= "/{groupId}", consumes = MediaType.APPLICATION_JSON_VALUE)
-    public ResponseEntity<GroupDto> updateGroup (@PathVariable Long groupId, @RequestBody GroupDto groupDto) {
+    public ResponseEntity<GroupDto> updateGroup (@RequestBody GroupDto groupDto) {
         return ResponseEntity.ok(groupDto);
     }
 }
