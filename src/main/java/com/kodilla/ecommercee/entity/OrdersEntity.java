@@ -23,8 +23,8 @@ public class OrdersEntity {
     @NotNull
     @GeneratedValue
     @Id
-    @ManyToOne
-    private CartsEntity cartEnity;
+   // @ManyToOne
+   // private CartsEntity cartEnity;
     BigInteger orderId;
 
     @Column(name="USER_ID", unique = false)

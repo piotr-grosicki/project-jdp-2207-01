@@ -25,10 +25,10 @@ public class CartsEntity {
     @NotNull
     @GeneratedValue
     @Id
-    @OneToMany(cascade=CascadeType.ALL,
-            fetch = FetchType.EAGER,
-            targetEntity = OrdersEntity.class,
-            mappedBy = "cartEnity")
+    //@OneToMany(cascade=CascadeType.ALL,
+  //          fetch = FetchType.EAGER,
+  //          targetEntity = OrdersEntity.class,
+  //          mappedBy = "cartEnity")
 
      BigInteger cartId;
 
