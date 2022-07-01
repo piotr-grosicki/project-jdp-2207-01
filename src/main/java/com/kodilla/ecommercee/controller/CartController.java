@@ -19,22 +19,22 @@ public class CartController {
         return new ArrayList<>();
     }
 
-    @GetMapping(value = "getProductsFromCart")
+    @GetMapping(value = "{cartId}")
     public List <CartDto> getProductsFromCart(@PathVariable Long cartId) {
         return new ArrayList<>();
     }
 
-      @PostMapping(value = "addProductToCart", consumes = APPLICATION_JSON_VALUE)
+      @PostMapping(value = "{cartId}", consumes = APPLICATION_JSON_VALUE)
     public CartDto addProductToCart(@PathVariable Long cartId, @PathVariable Long productId) {
         return new CartDto(2L, Arrays.asList("Product1"), 1L);
     }
 
-    @DeleteMapping(value = "deleteProductFromCart")
+    @DeleteMapping(value = "{cartId}")
     public ResponseEntity<Void> deleteChosenProductFromCart(@PathVariable Long cartId, @PathVariable Long productId) {
                    return ResponseEntity.ok().build();
         }
 
-    @PostMapping(value = "addNewOrder", consumes = APPLICATION_JSON_VALUE)
+    @PostMapping( consumes = APPLICATION_JSON_VALUE)
     public ResponseEntity<Void> addNewOrder(@RequestBody CartDto cartDto) {
         return ResponseEntity.ok().build();    }
 
