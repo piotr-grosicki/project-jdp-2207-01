@@ -12,25 +12,26 @@ import java.util.HashSet;
 import java.util.Set;
 
 @Entity
-@Table(name = "ORDERS")
+@Table(name ="orders")
 @AllArgsConstructor
 @NoArgsConstructor
 @Getter
 @Setter
 public class OrdersEntity {
 
-    @Column(name="ORDER_ID", unique = true)
+    @Column(name="order_id", unique = true)
     @NotNull
-    @GeneratedValue
+    @GeneratedValue (strategy = GenerationType.IDENTITY)
     @Id
-   // @ManyToOne
+    @ManyToOne
+
+
    // private CartsEntity cartEnity;
     BigInteger orderId;
 
-    @Column(name="USER_ID", unique = false)
-    @NotNull
+    @Column(name="user_id
     BigInteger  userId;
-    @Column(name="DATE_ID", unique = false)
+    @Column(name="date_id", unique = false)
     @NotNull
     Date date;
 
