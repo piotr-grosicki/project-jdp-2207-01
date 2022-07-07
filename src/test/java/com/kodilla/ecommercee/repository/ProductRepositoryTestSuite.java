@@ -1,5 +1,6 @@
 package com.kodilla.ecommercee.repository;
 
+import com.kodilla.ecommercee.entity.Group;
 import com.kodilla.ecommercee.entity.Product;
 import org.junit.Test;
 import org.junit.runner.RunWith;
@@ -7,6 +8,7 @@ import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.boot.test.context.SpringBootTest;
 import org.springframework.test.context.junit4.SpringRunner;
 
+import java.util.ArrayList;
 import java.util.Optional;
 
 import static org.junit.jupiter.api.Assertions.assertEquals;
@@ -18,6 +20,8 @@ public class ProductRepositoryTestSuite {
 
     @Autowired
     ProductRepository productRepository;
+    @Autowired
+    GroupRepository groupRepository;
 
     @Test
     public void saveProduct() {
@@ -47,5 +51,28 @@ public class ProductRepositoryTestSuite {
 
         //Then
         assertNotNull(result);
+
+        //CleanUp
+        productRepository.deleteById(id);
+    }
+
+    @Test
+    public void findProductGroup() {
+        //Given
+        Group breadstuff = Group.builder().name("breadstuff").products(new ArrayList<>()).build();
+        Product product = Product.builder().productName("bread").group(breadstuff).build();
+
+        //When
+        groupRepository.save(breadstuff);
+        productRepository.save(product);
+
+        String groupName = product.getGroup().getName();
+
+        //Then
+        assertEquals("breadstuff", groupName);
+
+        //CleanUp
+        productRepository.deleteById(product.getProductId());
+        groupRepository.deleteById(breadstuff.getId());
     }
 }

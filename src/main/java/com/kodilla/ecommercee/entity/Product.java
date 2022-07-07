@@ -1,18 +1,15 @@
 package com.kodilla.ecommercee.entity;
 
-import lombok.AllArgsConstructor;
-import lombok.Getter;
-import lombok.NoArgsConstructor;
+import lombok.*;
 
-import javax.persistence.Column;
-import javax.persistence.Entity;
-import javax.persistence.GeneratedValue;
-import javax.persistence.Id;
+import javax.persistence.*;
 
+@Builder
 @Entity
 @AllArgsConstructor
 @NoArgsConstructor
 @Getter
+@Setter
 public class Product {
     @Id
     @GeneratedValue
@@ -21,4 +18,8 @@ public class Product {
 
     @Column(name = "product_name")
     private String productName;
+
+    @ManyToOne
+    @JoinColumn(name = "group_id")
+    private Group group;
 }

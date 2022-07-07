@@ -1,2 +1,10 @@
-package com.kodilla.ecommercee.repository;public class ProductRepository {
+package com.kodilla.ecommercee.repository;
+
+import com.kodilla.ecommercee.entity.Product;
+import org.springframework.data.jpa.repository.JpaRepository;
+import org.springframework.stereotype.Repository;
+
+@Repository
+public interface ProductRepository extends JpaRepository<Product, Long> {
+
 }
