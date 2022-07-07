@@ -11,6 +11,7 @@ import javax.validation.constraints.NotNull;
 import java.math.BigInteger;
 import java.util.ArrayList;
 import java.util.Date;
+import java.util.List;
 
 @Entity
 @Table(name="carts")
@@ -25,13 +26,16 @@ public class Carts {
     @NotNull
     @GeneratedValue(strategy = GenerationType.IDENTITY)
     @Id
-    @OneToMany//(cascade={CascadeType.MERGE,
-    //        CascadeType.PERSIST},
-    //  fetch = FetchType.EAGER,
-    //    targetEntity = OrdersEntity.class)
-    //  mappedBy = "cartEnity")
+    private int cartsid;
+    @OneToMany(cascade={CascadeType.MERGE,
+            CascadeType.PERSIST},
+            fetch = FetchType.EAGER,
+            targetEntity = Orders.class,
+    mappedBy = "cart")
+    @JoinColumn(name  = "order_id")
+    private List<Orders> orders;
 
-    // BigInteger cartId;
+
 
 
 

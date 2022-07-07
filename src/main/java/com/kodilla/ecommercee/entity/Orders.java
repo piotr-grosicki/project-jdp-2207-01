@@ -17,15 +17,14 @@ import java.math.BigInteger;
 @Setter
 public class Orders {
 
-    @Column(name="order_id", unique = true)
+    @Setter(AccessLevel.NONE)
+    @Column(name = "order_id", nullable = false, unique = true)
     @NotNull
-    @GeneratedValue (strategy = GenerationType.IDENTITY)
+    @GeneratedValue(strategy = GenerationType.IDENTITY)
     @Id
-   // @ManyToOne
+    @ManyToOne(optional = false)
 
-
-    // private CartsEntity cartEnity;
-    BigInteger orderId;
+    Carts cart;
 
 
 
