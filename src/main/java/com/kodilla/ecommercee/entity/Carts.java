@@ -14,7 +14,7 @@ import java.util.Date;
 import java.util.List;
 
 @Entity
-@Table(name="carts")
+@Table(name="cart")
 @AllArgsConstructor
 @NoArgsConstructor
 @Getter
@@ -22,30 +22,21 @@ import java.util.List;
 public class Carts {
 
 
-    @Column(name="cart_id", unique = true)
+    //@Column(name = "carts_id", unique = true)
     @NotNull
     @GeneratedValue(strategy = GenerationType.IDENTITY)
     @Id
-    private int cartsid;
-    @OneToMany(cascade={CascadeType.MERGE,
-            CascadeType.PERSIST},
-            fetch = FetchType.EAGER,
-            targetEntity = Orders.class,
-    mappedBy = "cart")
-    @JoinColumn(name  = "order_id")
+    private int carts_id;
+    @OneToMany
+    @JoinColumn(name  = "orders_id")
     private List<Orders> orders;
 
 
-
-
-
-    @Column(name="user_id", unique = false)
+    @Column(name="user_id")
     @NotNull
-    private BigInteger userID;
+   private BigInteger userID;
 
-    @Column(name="date_id_ID", unique = false)
-    @NotNull
-    private Date date;
+
 
 
 

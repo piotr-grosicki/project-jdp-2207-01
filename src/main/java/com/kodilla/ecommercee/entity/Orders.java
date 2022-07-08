@@ -18,12 +18,13 @@ import java.math.BigInteger;
 public class Orders {
 
     @Setter(AccessLevel.NONE)
-    @Column(name = "order_id", nullable = false, unique = true)
+   // @Column(name = "orders_id", nullable = false, unique = true)
     @NotNull
     @GeneratedValue(strategy = GenerationType.IDENTITY)
     @Id
-    @ManyToOne(optional = false)
-
+    BigInteger orders_id;
+    @ManyToOne(cascade = CascadeType.MERGE,
+    fetch = FetchType.LAZY)
     Carts cart;
 
 
