@@ -27,13 +27,14 @@ repositories {
 dependencies {
     implementation('org.springframework.boot:spring-boot-starter-data-jpa')
     implementation('org.springframework.boot:spring-boot-starter-web')
+
     runtimeOnly('com.h2database:h2')
-    testImplementation('org.springframework.boot:spring-boot-starter-test')
-    // https://mvnrepository.com/artifact/org.projectlombok/lombok
-    compileOnly 'org.projectlombok:lombok:1.18.24'
+    runtimeOnly 'mysql:mysql-connector-java'
+
     annotationProcessor 'org.projectlombok:lombok:1.18.24'
+    compileOnly group: 'org.projectlombok', name: 'lombok', version: '1.18.24'
+
     testCompileOnly 'org.projectlombok:lombok:1.18.24'
     testAnnotationProcessor 'org.projectlombok:lombok:1.18.24'
-    compile group: 'mysql', name: 'mysql-connector-java', version: '5.1.6'
-
+    testImplementation('org.springframework.boot:spring-boot-starter-test')
 }
