@@ -3,6 +3,7 @@ package com.kodilla.ecommercee.entity;
 import lombok.*;
 
 import javax.persistence.*;
+import java.util.List;
 
 @Builder
 @Entity
@@ -22,4 +23,12 @@ public class Product {
     @ManyToOne
     @JoinColumn(name = "group_id")
     private Group group;
+
+   /* @ManyToMany(cascade = CascadeType.ALL)
+    @JoinTable(
+            name = "cart_has_product",
+            joinColumns = {@JoinColumn(name = "product_id", referencedColumnName = "product_id")},
+            inverseJoinColumns = {@JoinColumn(name = "cart_id", referencedColumnName = "cart_id")}
+    )
+    private List<Cart> carts; */
 }
