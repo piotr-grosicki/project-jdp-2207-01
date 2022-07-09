@@ -5,33 +5,25 @@ import lombok.*;
 
 import javax.persistence.*;
 import javax.validation.constraints.NotNull;
-import java.math.BigInteger;
-
 
 
 @Entity
-@Table(name ="orders")
+@Table(name = "orders")
 @AllArgsConstructor
 @NoArgsConstructor
 @Getter
 @Setter
-public class Orders {
+public class Order {
 
     @Setter(AccessLevel.NONE)
-   // @Column(name = "orders_id", nullable = false, unique = true)
+    // @Column(name = "orders_id", nullable = false, unique = true)
     @NotNull
     @GeneratedValue(strategy = GenerationType.IDENTITY)
     @Id
-    BigInteger orders_id;
+    private Long orders_id;
+
     @ManyToOne(cascade = CascadeType.MERGE,
-    fetch = FetchType.LAZY)
+            fetch = FetchType.LAZY)
     Carts cart;
-
-
-
-
-
-
-
 
 }

@@ -14,7 +14,7 @@ import java.util.Date;
 import java.util.List;
 
 @Entity
-@Table(name="cart")
+@Table(name = "cart")
 @AllArgsConstructor
 @NoArgsConstructor
 @Getter
@@ -26,20 +26,16 @@ public class Carts {
     @NotNull
     @GeneratedValue(strategy = GenerationType.IDENTITY)
     @Id
-    private int carts_id;
+    private Long carts_id;
+
     @OneToMany
-    @JoinColumn(name  = "orders_id")
-    private List<Orders> orders;
+    @JoinColumn(name = "orders_id")
+    private List<Order> order;
 
 
-    @Column(name="user_id")
+    @Column(name = "user_id")
     @NotNull
-   private BigInteger userID;
-
-
-
-
-
+    private BigInteger userID;
 
 
 }
