@@ -24,6 +24,6 @@ public class Order {
 
     @ManyToOne(cascade = CascadeType.MERGE,
             fetch = FetchType.LAZY)
-    Carts cart;
+    Cart cart;
 
 }

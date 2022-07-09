@@ -9,8 +9,7 @@ import lombok.Setter;
 import javax.persistence.*;
 import javax.validation.constraints.NotNull;
 import java.math.BigInteger;
-import java.util.ArrayList;
-import java.util.Date;
+import java.util.HashSet;
 import java.util.List;
 
 @Entity
@@ -19,14 +18,16 @@ import java.util.List;
 @NoArgsConstructor
 @Getter
 @Setter
-public class Carts {
+public class Cart {
 
 
-    //@Column(name = "carts_id", unique = true)
+    //@Column(name = "cart_id", unique = true)
     @NotNull
     @GeneratedValue(strategy = GenerationType.IDENTITY)
     @Id
     private Long carts_id;
+    // @ManyToMany(mappedBy = "product")
+   // private list<Product> product;
 
     @OneToMany
     @JoinColumn(name = "orders_id")
