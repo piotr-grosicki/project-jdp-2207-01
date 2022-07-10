@@ -3,37 +3,68 @@ package com.kodilla.ecommercee.repository;
 import com.kodilla.ecommercee.entity.Group;
 import org.junit.Test;
 import org.junit.runner.RunWith;
-import org.mockito.Mock;
+import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.boot.test.context.SpringBootTest;
 import org.springframework.test.context.junit4.SpringRunner;
 
-import java.util.ArrayList;
 import java.util.List;
 
-import static org.junit.Assert.assertEquals;
-import static org.mockito.Mockito.when;
-
+import static org.junit.Assert.*;
 
 @RunWith(SpringRunner.class)
 @SpringBootTest
 public class GroupRepositoryTestSuite {
 
-    @Mock
+    @Autowired
     GroupRepository groupRepository;
 
     @Test
-    public void testTest() {
-        //given
-        List<Group> groupList = new ArrayList<>();
-        groupList.add(new Group(1l, "name"));
-        groupList.add(new Group(2l, "name2"));
+    public void findAllGroupsTest() {
+        //given & when
+        List<Group> result = groupRepository.findAll();
 
-        when(groupRepository.findAll()).thenReturn(groupList);
+        //then
+        assertTrue(result.isEmpty());
+    }
+
+    @Test
+    public void findTestByIdTest() {
+        //given
+        Group groupToSearch = groupRepository.save(Group.builder().name("test").build());
+
+        //when
+        Group result = groupRepository.findById(groupToSearch.getId()).get();
+
+        //then
+        assertEquals(groupToSearch.getName(), result.getName());
+        assertNotNull(result.getId());
+    }
+
+    @Test
+    public void saveGroupTest() {
+        //given
+        groupRepository.save(Group.builder().name("test").build());
 
         //when
         List<Group> result = groupRepository.findAll();
 
         //then
-        assertEquals(2, result.size());
+        assertNotNull(result);
+    }
+
+    @Test
+    public void updateTestGroup() {
+        //given
+        String newName = "new name";
+        Group groupToSave = groupRepository.save(Group.builder().name("Test").build());
+
+        //when
+        groupToSave.setName(newName);
+        groupRepository.save(groupToSave);
+        List<Group> groupList = groupRepository.findAll();
+
+        //when
+        assertEquals(newName, groupToSave.getName());
+        assertEquals(1, groupList.size());
     }
 }
