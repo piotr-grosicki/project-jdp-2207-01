@@ -36,7 +36,7 @@ public class Cart {
 
     @Column(name = "user_id")
     @NotNull
-    private BigInteger userID;
+    private Long userID;
 
 
 }
