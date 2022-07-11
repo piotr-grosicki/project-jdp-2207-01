@@ -8,8 +8,6 @@ import lombok.Setter;
 
 import javax.persistence.*;
 import javax.validation.constraints.NotNull;
-import java.math.BigInteger;
-import java.util.HashSet;
 import java.util.List;
 
 @Entity
@@ -20,18 +18,18 @@ import java.util.List;
 @Setter
 public class Cart {
 
-
-    //@Column(name = "cart_id", unique = true)
-    @NotNull
-    @GeneratedValue(strategy = GenerationType.IDENTITY)
     @Id
-    private Long carts_id;
-    // @ManyToMany(mappedBy = "product")
-   // private list<Product> product;
+    @NotNull
+    @Column(name = "cart_id", unique = true)
+    @GeneratedValue(strategy = GenerationType.IDENTITY)
+    private Long cart_id;
+
+    @ManyToMany(cascade = CascadeType.ALL, mappedBy = "carts")
+    private List<Product> products;
 
     @OneToMany
-    @JoinColumn(name = "orders_id")
-    private List<Order> order;
+    @JoinColumn(name = "order_id")
+    private List<Order> orders;
 
 
     @Column(name = "user_id")

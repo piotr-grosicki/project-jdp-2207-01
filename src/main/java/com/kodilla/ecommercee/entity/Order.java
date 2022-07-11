@@ -16,14 +16,13 @@ import javax.validation.constraints.NotNull;
 public class Order {
 
     @Setter(AccessLevel.NONE)
-    // @Column(name = "orders_id", nullable = false, unique = true)
+    @Column(name = "order_id", nullable = false, unique = true)
     @NotNull
     @GeneratedValue(strategy = GenerationType.IDENTITY)
     @Id
-    private Long orders_id;
+    private Long order_id;
 
     @ManyToOne(cascade = CascadeType.MERGE,
             fetch = FetchType.LAZY)
-    Cart cart;
-
+    private Cart cart;
 }
