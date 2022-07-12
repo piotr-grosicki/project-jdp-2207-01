@@ -14,21 +14,21 @@ import java.util.List;
 public class Product {
     @Id
     @GeneratedValue(strategy = GenerationType.IDENTITY)
-    @Column(name = "product_id")
+    @Column(name = "productId")
     private Long productId;
 
-    @Column(name = "product_name")
+    @Column(name = "productName")
     private String productName;
 
     @ManyToOne
-    @JoinColumn(name = "group_id")
+    @JoinColumn(name = "groupId")
     private Group group;
 
     @ManyToMany(cascade = CascadeType.ALL)
     @JoinTable(
             name = "cart_has_product",
-            joinColumns = {@JoinColumn(name = "product_id", referencedColumnName = "product_id")},
-            inverseJoinColumns = {@JoinColumn(name = "cart_id", referencedColumnName = "cart_id")}
+            joinColumns = {@JoinColumn(name = "productId", referencedColumnName = "productId")},
+            inverseJoinColumns = {@JoinColumn(name = "cartId", referencedColumnName = "cartId")}
     )
     private List<Cart> carts;
 }

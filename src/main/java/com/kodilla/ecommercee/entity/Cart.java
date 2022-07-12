@@ -20,19 +20,19 @@ public class Cart {
 
     @Id
     @NotNull
-    @Column(name = "cart_id", unique = true)
+    @Column(name = "cartId", unique = true)
     @GeneratedValue(strategy = GenerationType.IDENTITY)
     private Long cart_id;
 
     @ManyToMany(cascade = CascadeType.ALL, mappedBy = "carts")
-    private List<Product> products;
+    private List<Product> product;
 
     @OneToMany
-    @JoinColumn(name = "order_id")
-    private List<Order> orders;
+    @JoinColumn(name = "orderId")
+    private List<Order> order;
 
 
-    @Column(name = "user_id")
+    @Column(name = "userId")
     @NotNull
     private Long userID;
 

@@ -8,7 +8,7 @@ import javax.validation.constraints.NotNull;
 
 
 @Entity
-@Table(name = "orders")
+@Table(name = "order")
 @AllArgsConstructor
 @NoArgsConstructor
 @Getter
@@ -16,11 +16,11 @@ import javax.validation.constraints.NotNull;
 public class Order {
 
     @Setter(AccessLevel.NONE)
-    @Column(name = "order_id", nullable = false, unique = true)
+    @Column(name = "orderId", nullable = false, unique = true)
     @NotNull
     @GeneratedValue(strategy = GenerationType.IDENTITY)
     @Id
-    private Long order_id;
+    private Long orderId;
 
     @ManyToOne(cascade = CascadeType.MERGE,
             fetch = FetchType.LAZY)
