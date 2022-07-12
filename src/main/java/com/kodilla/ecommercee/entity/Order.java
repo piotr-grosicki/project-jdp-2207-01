@@ -8,7 +8,7 @@ import javax.validation.constraints.NotNull;
 
 
 @Entity
-@Table(name = "order")
+@Table(name = "or")
 @AllArgsConstructor
 @NoArgsConstructor
 @Getter
