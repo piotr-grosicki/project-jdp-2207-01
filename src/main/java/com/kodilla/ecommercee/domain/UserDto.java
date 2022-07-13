@@ -14,6 +14,4 @@ public class UserDto {
     private String lastName;
     private String email;
     private String address;
-    private int key;
-    private boolean isBlocked;
 }
