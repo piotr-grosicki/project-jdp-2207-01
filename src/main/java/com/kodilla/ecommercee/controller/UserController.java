@@ -10,7 +10,7 @@ import org.springframework.web.bind.annotation.*;
 public class UserController {
 
     @PostMapping(consumes = MediaType.APPLICATION_JSON_VALUE)
-    public ResponseEntity<Void> createUser(@RequestBody UserDto userDto) {
+    public static ResponseEntity<Void> createUser(@RequestBody UserDto userDto) {
         return ResponseEntity.ok().build();
     }
 
