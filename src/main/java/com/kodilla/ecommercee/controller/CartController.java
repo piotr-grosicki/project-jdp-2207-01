@@ -24,7 +24,7 @@ public class CartController {
         return new ArrayList<>();
     }
 
-      @PostMapping(value = "{cartId}", consumes = APPLICATION_JSON_VALUE)
+    @PostMapping(value = "{cartId}", consumes = APPLICATION_JSON_VALUE)
     public CartDto addProductToCart(@PathVariable Long cartId, @PathVariable Long productId) {
         return new CartDto(2L, Arrays.asList("Product1"), 1L);
     }
