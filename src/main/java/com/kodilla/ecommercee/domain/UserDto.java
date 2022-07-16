@@ -1,12 +1,11 @@
 package com.kodilla.ecommercee.domain;
 
-import lombok.AllArgsConstructor;
-import lombok.Getter;
-import lombok.Setter;
+import lombok.*;
 
 @Getter
 @Setter
 @AllArgsConstructor
+@NoArgsConstructor
 public class UserDto {
     private Long userId;
     private String username;
@@ -14,4 +13,5 @@ public class UserDto {
     private String lastName;
     private String email;
     private String address;
+    private boolean isActive;
 }
