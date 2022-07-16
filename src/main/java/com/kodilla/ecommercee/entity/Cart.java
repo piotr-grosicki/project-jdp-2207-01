@@ -1,15 +1,13 @@
 package com.kodilla.ecommercee.entity;
 
 
-import lombok.AllArgsConstructor;
-import lombok.Getter;
-import lombok.NoArgsConstructor;
-import lombok.Setter;
+import lombok.*;
 
 import javax.persistence.*;
 import javax.validation.constraints.NotNull;
 import java.util.List;
 
+@Builder
 @Entity
 @Table(name = "cart")
 @AllArgsConstructor
@@ -19,7 +17,7 @@ import java.util.List;
 public class Cart {
 
     @Id
-    @NotNull
+    //@NotNull
     @Column(name = "cart_id", unique = true)
     @GeneratedValue(strategy = GenerationType.IDENTITY)
     private Long cart_id;
@@ -33,7 +31,7 @@ public class Cart {
 
 
     @Column(name = "user_id")
-    @NotNull
+    //@NotNull
     private Long userID;
 
 
