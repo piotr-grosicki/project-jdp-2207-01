@@ -3,6 +3,7 @@ package com.kodilla.ecommercee.entity;
 import lombok.AllArgsConstructor;
 import lombok.Getter;
 import lombok.NoArgsConstructor;
+import lombok.RequiredArgsConstructor;
 
 import javax.persistence.*;
 
@@ -30,4 +31,7 @@ public class User {
 
     @Column(name = "address")
     private String address;
+
+    @Column(name = "is_active")
+    private boolean isActive;
 }

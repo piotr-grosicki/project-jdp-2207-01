@@ -27,8 +27,8 @@ public class UserEntityTestSuite {
     @Test
     public void testSaveUserandFindUserById() {
 
-       User james = new User(1L,"JamesH","James","Howe","jameshowe@gmail.com","Chicago");
-       User steve = new User(2L,"SteveB","Steve","Bowie","stevebowie@gmail.com","Tampa");
+       User james = new User(1L,"JamesH","James","Howe","jameshowe@gmail.com","Chicago", true);
+       User steve = new User(2L,"SteveB","Steve","Bowie","stevebowie@gmail.com","Tampa", true);
 
 
        userRepository.save(james);
@@ -54,10 +54,10 @@ public class UserEntityTestSuite {
     @Test
     public void testFindAll() {
 
-        User james = new User(11L,"JamesW","James","Howe","jameshowe@gmail.com","Chicago");
-        User steve = new User(21L,"SteveB","Steve","Bowie","stevebowie@gmail.com","Tampa");
-        User adam = new User(31L,"AdamW","Adam","Wolf","adamwolf@gmail.com","Brooklyn");
-        User john = new User(41L,"JohnW","John","Smith","johnSmith@gmail.com","Brooklyn");
+        User james = new User(11L,"JamesW","James","Howe","jameshowe@gmail.com","Chicago", true);
+        User steve = new User(21L,"SteveB","Steve","Bowie","stevebowie@gmail.com","Tampa", true);
+        User adam = new User(31L,"AdamW","Adam","Wolf","adamwolf@gmail.com","Brooklyn", true);
+        User john = new User(41L,"JohnW","John","Smith","johnSmith@gmail.com","Brooklyn", true);
 
 
         userRepository.save(james);
@@ -76,8 +76,8 @@ public class UserEntityTestSuite {
     @Test
     public void testDeleteUserById() {
 
-        User james = new User(9L,"JamesH","James","Howe","jameshowe@gmail.com","Chicago");
-        User steve = new User(15L,"SteveB","Steve","Bowie","stevebowie@gmail.com","Tampa");
+        User james = new User(9L,"JamesH","James","Howe","jameshowe@gmail.com","Chicago", true);
+        User steve = new User(15L,"SteveB","Steve","Bowie","stevebowie@gmail.com","Tampa", true);
 
         userRepository.save(james);
         userRepository.save(steve);
@@ -99,10 +99,10 @@ public class UserEntityTestSuite {
     @Test
     public void testDeleteAll() {
 
-        User james = new User(5L,"JamesH","James","Howe","jameshowe@gmail.com","Chicago");
-        User steve = new User(6L,"SteveB","Steve","Bowie","stevebowie@gmail.com","Tampa");
-        User adam = new User(7L,"AdamW","Adam","Wolf","adamwolf@gmail.com","Brooklyn");
-        User john = new User(8L,"JohnW","John","Smith","johnSmith@gmail.com","Brooklyn");
+        User james = new User(5L,"JamesH","James","Howe","jameshowe@gmail.com","Chicago", true);
+        User steve = new User(6L,"SteveB","Steve","Bowie","stevebowie@gmail.com","Tampa", true);
+        User adam = new User(7L,"AdamW","Adam","Wolf","adamwolf@gmail.com","Brooklyn", true);
+        User john = new User(8L,"JohnW","John","Smith","johnSmith@gmail.com","Brooklyn", true);
 
         userRepository.save(james);
         userRepository.save(steve);
