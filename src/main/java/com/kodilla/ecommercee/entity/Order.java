@@ -2,7 +2,6 @@ package com.kodilla.ecommercee.entity;
 
 
 import lombok.*;
-
 import javax.persistence.*;
 import javax.validation.constraints.NotNull;
 
@@ -25,4 +24,13 @@ public class Order {
     @ManyToOne(cascade = CascadeType.MERGE,
             fetch = FetchType.LAZY)
     private Cart cart;
+
+    @ManyToOne
+    @JoinColumn(name = "user_id")
+    private User user;
+
+    public Order(User user) {
+        this.user = user;
+    }
+
 }
