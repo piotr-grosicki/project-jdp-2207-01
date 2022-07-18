@@ -1,15 +1,13 @@
 package com.kodilla.ecommercee.entity;
 
 
-import lombok.AllArgsConstructor;
-import lombok.Getter;
-import lombok.NoArgsConstructor;
-import lombok.Setter;
+import lombok.*;
 
 import javax.persistence.*;
 import javax.validation.constraints.NotNull;
 import java.util.List;
 
+@Builder
 @Entity
 @Table(name = "cart")
 @AllArgsConstructor
@@ -22,7 +20,7 @@ public class Cart {
     @NotNull
     @Column(name = "cart_id", unique = true)
     @GeneratedValue(strategy = GenerationType.IDENTITY)
-    private Long cart_id;
+    private Long cartId;
 
     @ManyToMany(cascade = CascadeType.ALL, mappedBy = "carts")
     private List<Product> products;
@@ -31,10 +29,7 @@ public class Cart {
     @JoinColumn(name = "order_id")
     private List<Order> orders;
 
-
     @Column(name = "user_id")
     @NotNull
-    private Long userID;
-
-
+    private Long userId;
 }
