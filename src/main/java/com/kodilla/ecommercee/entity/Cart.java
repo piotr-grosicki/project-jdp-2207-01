@@ -25,8 +25,7 @@ public class Cart {
     @ManyToMany(cascade = CascadeType.ALL, mappedBy = "carts")
     private List<Product> products;
 
-    @OneToMany
-    @JoinColumn(name = "order_id")
+    @OneToMany(mappedBy = "cart")
     private List<Order> orders;
 
 

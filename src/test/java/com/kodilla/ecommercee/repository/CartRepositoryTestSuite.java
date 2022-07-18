@@ -10,6 +10,7 @@ import org.junit.runner.RunWith;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.boot.test.context.SpringBootTest;
 import org.springframework.test.context.junit4.SpringRunner;
+import org.springframework.transaction.annotation.Transactional;
 
 import java.util.ArrayList;
 import java.util.List;
@@ -17,6 +18,7 @@ import java.util.Optional;
 
 import static org.hibernate.validator.internal.util.Contracts.assertNotNull;
 
+@Transactional
 @SpringBootTest
 @RunWith(SpringRunner.class)
 public class CartRepositoryTestSuite {
@@ -64,17 +66,21 @@ public class CartRepositoryTestSuite {
         assertNotNull(result.get());
         Assert.assertEquals(cart.getProducts().get(0).getGroup().getName(),"Group 1");
 
+        //CleanUp
+        cartRepository.deleteAll();
+        groupRepository.deleteAll();
+
     }
 
     @Test
     public void deleteCartById() {
         //Given
-        List<Product> products = new ArrayList<>();
-        Product product = Product.builder()
+        List<Product> products1 = new ArrayList<>();
+        Product product1 = Product.builder()
                 .productName("test product no 2")
                 .build();
-        products.add(product);
-        Cart cart = Cart.builder().products(products).build();
+        products1.add(product1);
+        Cart cart = Cart.builder().products(products1).build();
         cartRepository.save(cart);
         Long id = cart.getCart_id();
 
@@ -83,6 +89,9 @@ public class CartRepositoryTestSuite {
 
         //Then
         Assert.assertNull(cartRepository.findById(id).orElse(null));
+
+        //CleanUp
+        cartRepository.deleteAll();
 
     }
 
