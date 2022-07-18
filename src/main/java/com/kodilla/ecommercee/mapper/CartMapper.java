@@ -29,10 +29,4 @@ public class CartMapper {
 
         return cartDto;
     }
-
-    public List<CartDto> mapToCartDtoList(final List<Cart> cartList) {
-        return cartList.stream()
-                .map(this::mapToCartDto)
-                .collect(Collectors.toList());
-    }
 }
