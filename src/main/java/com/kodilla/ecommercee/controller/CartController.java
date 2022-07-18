@@ -3,6 +3,7 @@ package com.kodilla.ecommercee.controller;
 import com.kodilla.ecommercee.domain.CartDto;
 import com.kodilla.ecommercee.domain.ProductDto;
 import com.kodilla.ecommercee.entity.Cart;
+import com.kodilla.ecommercee.entity.Order;
 import com.kodilla.ecommercee.entity.Product;
 import com.kodilla.ecommercee.exception.CartNotExistException;
 import com.kodilla.ecommercee.exception.ProductNotExistException;
@@ -43,8 +44,9 @@ public class CartController {
         return ResponseEntity.ok(productMapper.mapToProductDtoList(cart.getProducts()));
     }
 
-    @PostMapping(consumes = APPLICATION_JSON_VALUE)
-    public ResponseEntity<Void> createNewCart(@RequestBody Cart cart) {
+    @PostMapping(value = "{userId}")
+    public ResponseEntity<Void> createNewCart(@PathVariable Long userId) {
+        Cart cart = new Cart();
         cartRepository.save(cart);
         return ResponseEntity.ok().build();
     }
@@ -65,5 +67,5 @@ public class CartController {
         productMapper.mapToProductDtoList(cart.getProducts()).remove(product);
         cartRepository.save(cart);
         return ResponseEntity.ok("Chosen product has been deleted from your cart.");
-        }
+    }
 }
