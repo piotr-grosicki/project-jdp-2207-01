@@ -4,7 +4,7 @@ import com.kodilla.ecommercee.domain.ProductDto;
 import com.kodilla.ecommercee.entity.Product;
 import com.kodilla.ecommercee.exception.ProductNotFoundException;
 import com.kodilla.ecommercee.mapper.ProductMapper;
-import com.kodilla.ecommercee.service.ProductDbService;
+import com.kodilla.ecommercee.controller.service.ProductDbService;
 import lombok.RequiredArgsConstructor;
 import org.springframework.http.MediaType;
 import org.springframework.http.ResponseEntity;

@@ -1,4 +1,4 @@
-package com.kodilla.ecommercee.service;
+package com.kodilla.ecommercee.controller.service;
 
 import com.kodilla.ecommercee.exception.ProductNotFoundException;
 import com.kodilla.ecommercee.entity.Product;
