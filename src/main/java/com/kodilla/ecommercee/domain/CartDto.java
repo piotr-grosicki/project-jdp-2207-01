@@ -13,7 +13,7 @@ import java.util.List;
 @AllArgsConstructor
 @NoArgsConstructor
 public class CartDto {
-    private Long cartId;
+    private Long  cartId; //Long
     private List<String> product;
-    private Long userId;
+    private Long  userId; //Long
 }
