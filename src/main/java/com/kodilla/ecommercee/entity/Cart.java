@@ -16,10 +16,7 @@ import java.util.List;
 public class Cart {
 
     @Id
-<<<<<<< HEAD
-=======
     @NotNull
->>>>>>> c1e93e5ac319be062c47ec0c2045f9be11aa7aa6
     @Column(name = "cart_id", unique = true)
     @GeneratedValue(strategy = GenerationType.IDENTITY)
     private Long cartId;
@@ -31,12 +28,11 @@ public class Cart {
     private List<Order> orders;
 
     @Column(name = "user_id")
-<<<<<<< HEAD
     private Long userID;
 
 
-=======
+
     @NotNull
     private Long userId;
->>>>>>> c1e93e5ac319be062c47ec0c2045f9be11aa7aa6
+
 }
