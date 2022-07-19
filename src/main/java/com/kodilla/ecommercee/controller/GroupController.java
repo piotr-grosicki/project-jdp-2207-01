@@ -2,10 +2,14 @@ package com.kodilla.ecommercee.controller;
 
 
 import com.kodilla.ecommercee.domain.GroupDto;
+import com.kodilla.ecommercee.domain.OrderDto;
 import lombok.AllArgsConstructor;
 import org.springframework.http.MediaType;
 import org.springframework.http.ResponseEntity;
 import org.springframework.web.bind.annotation.*;
+
+import java.util.ArrayList;
+import java.util.List;
 
 @CrossOrigin("*")
 @RestController
@@ -28,4 +32,10 @@ public class GroupController {
     public ResponseEntity<GroupDto> updateGroup (@RequestBody GroupDto groupDto) {
         return ResponseEntity.ok(groupDto);
     }
+
+    @GetMapping
+    public List<GroupDto> getGroups() {
+        return new ArrayList<>();
+    }
+
 }

@@ -1,6 +1,5 @@
 package com.kodilla.ecommercee.entity;
 
-
 import lombok.*;
 
 import javax.persistence.*;
@@ -28,7 +27,7 @@ public class Cart {
     @OneToMany(mappedBy = "cart")
     private List<Order> orders;
 
-    @Column(name = "user_id")
-    @NotNull
-    private Long userId;
+    @ManyToOne
+    private User user;
+
 }
