@@ -59,7 +59,7 @@ public class CartRepositoryTestSuite {
         cart.setOrders(ordersList);
         cartRepository.save(cart);
 
-        Long id = cart.getCart_id();
+        Long id = cart.getCartId();
         Optional<Cart> result = cartRepository.findById(id);
         
         //Then
@@ -82,7 +82,7 @@ public class CartRepositoryTestSuite {
         products1.add(product1);
         Cart cart = Cart.builder().products(products1).build();
         cartRepository.save(cart);
-        Long id = cart.getCart_id();
+        Long id = cart.getCartId();
 
         //When
         cartRepository.deleteById(id);
@@ -94,5 +94,4 @@ public class CartRepositoryTestSuite {
         cartRepository.deleteAll();
 
     }
-
 }
