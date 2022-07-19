@@ -8,14 +8,10 @@ import org.springframework.http.MediaType;
 import org.springframework.http.ResponseEntity;
 import org.springframework.web.bind.annotation.*;
 
-import java.util.ArrayList;
-import java.util.List;
-
-
+@CrossOrigin("*")
 @RestController
 @RequestMapping("v1/group")
 @AllArgsConstructor
-@CrossOrigin("*")
 public class GroupController {
 
     @PostMapping(consumes = MediaType.APPLICATION_JSON_VALUE)
