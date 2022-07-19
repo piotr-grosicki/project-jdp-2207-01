@@ -24,53 +24,53 @@ public class ProductRepositoryTestSuite {
 
     @Test
     public void saveProduct() {
-        //Given
+        // Given
         Product product = Product.builder().productName("cheese").build();
 
-        //When
+        // When
         productRepository.save(product);
 
-        //Then
+        // Then
         assertEquals("cheese", product.getProductName());
         assertNotNull(product.getProductId());
 
-        //CleanUp
+        // CleanUp
         productRepository.deleteById(product.getProductId());
     }
 
     @Test
     public void findProductById() {
-        //Given
+        // Given
         Product product = Product.builder().productName("cheese").build();
 
-        //When
+        // When
         productRepository.save(product);
         Long id = product.getProductId();
         Optional<Product> result = productRepository.findById(id);
 
-        //Then
+        // Then
         assertNotNull(result);
 
-        //CleanUp
+        // CleanUp
         productRepository.deleteById(id);
     }
 
     @Test
     public void findProductGroup() {
-        //Given
+        // Given
         Group breadstuff = Group.builder().name("breadstuff").products(new ArrayList<>()).build();
         Product product = Product.builder().productName("bread").group(breadstuff).build();
 
-        //When
+         // When
         groupRepository.save(breadstuff);
         productRepository.save(product);
 
         String groupName = product.getGroup().getName();
 
-        //Then
+        // Then
         assertEquals("breadstuff", groupName);
 
-        //CleanUp
+        // CleanUp
         productRepository.deleteById(product.getProductId());
         groupRepository.deleteById(breadstuff.getId());
     }

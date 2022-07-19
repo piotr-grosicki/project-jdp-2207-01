@@ -28,4 +28,7 @@ public class Group {
             fetch = FetchType.LAZY
     )
     private List<Product> products;
+
+    public Group(String groupName, Long groupId) {
+    }
 }
