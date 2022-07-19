@@ -27,12 +27,7 @@ public class Cart {
     @OneToMany(mappedBy = "cart")
     private List<Order> orders;
 
-    @Column(name = "user_id")
-    private Long userID;
-
-
-
-    @NotNull
-    private Long userId;
+    @ManyToOne
+    private User user;
 
 }
