@@ -6,7 +6,7 @@ import lombok.*;
 import javax.persistence.*;
 import javax.validation.constraints.NotNull;
 
-
+@Builder
 @Entity
 @Table(name = "orders")
 @AllArgsConstructor
@@ -17,7 +17,7 @@ public class Order {
 
     @Setter(AccessLevel.NONE)
     @Column(name = "order_id", nullable = false, unique = true)
-    @NotNull
+    //@NotNull
     @GeneratedValue(strategy = GenerationType.IDENTITY)
     @Id
     private Long order_id;
