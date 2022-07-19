@@ -1,42 +1,80 @@
 package com.kodilla.ecommercee.controller;
 
+import com.kodilla.ecommercee.controller.service.CartDbService;
 import com.kodilla.ecommercee.domain.CartDto;
+import com.kodilla.ecommercee.domain.ProductDto;
+import com.kodilla.ecommercee.entity.Cart;
+import com.kodilla.ecommercee.exception.CartNotExistException;
+import com.kodilla.ecommercee.exception.ProductNotExistException;
+import com.kodilla.ecommercee.exception.UserNotExistException;
+import com.kodilla.ecommercee.mapper.CartMapper;
+import com.kodilla.ecommercee.mapper.ProductMapper;
+import lombok.RequiredArgsConstructor;
 import org.springframework.http.ResponseEntity;
 import org.springframework.web.bind.annotation.*;
 
-import java.util.ArrayList;
-import java.util.Arrays;
 import java.util.List;
 
-import static org.springframework.http.MediaType.APPLICATION_JSON_VALUE;
-
+@CrossOrigin("*")
 @RestController
+@RequiredArgsConstructor
 @RequestMapping("/v1/cart")
 public class CartController {
 
-    @GetMapping
-    public List <CartDto> getNewCart() {
-        return new ArrayList<>();
-    }
+    private final CartDbService cartDbService;
+    private final CartMapper cartMapper;
+    private final ProductMapper productMapper;
 
     @GetMapping(value = "{cartId}")
-    public List <CartDto> getProductsFromCart(@PathVariable Long cartId) {
-        return new ArrayList<>();
-    }
-
-    @PostMapping(value = "{cartId}", consumes = APPLICATION_JSON_VALUE)
-    public CartDto addProductToCart(@PathVariable Long cartId, @PathVariable Long productId) {
-        return new CartDto(2L, Arrays.asList("Product1"), 1L);
-    }
-
-    @DeleteMapping(value = "{cartId}")
-    public ResponseEntity<Void> deleteChosenProductFromCart(@PathVariable Long cartId, @PathVariable Long productId) {
-                   return ResponseEntity.ok().build();
+    public ResponseEntity<CartDto> getCart(@PathVariable Long cartId) {
+        try {
+            Cart cart = cartDbService.getCart(cartId);
+            return ResponseEntity.ok(cartMapper.mapToCartDto(cart));
+        } catch (CartNotExistException e) {
+            return ResponseEntity.badRequest().build();
         }
+    }
 
-    @PostMapping( consumes = APPLICATION_JSON_VALUE)
-    public ResponseEntity<Void> addNewOrder(@RequestBody CartDto cartDto) {
-        return ResponseEntity.ok().build();    }
+    @GetMapping(value = "{cartId}/products")
+    public ResponseEntity<List<ProductDto>> getProductsFromCart(@PathVariable Long cartId) {
+        try {
+            Cart cart = cartDbService.getCart(cartId);
+            return ResponseEntity.ok(productMapper.mapToProductDtoList(cart.getProducts()));
+        } catch (CartNotExistException e) {
+            return ResponseEntity.badRequest().build();
+        }
+    }
 
+    @PostMapping(value = "{userId}")
+    public ResponseEntity<String> createNewCart(@RequestBody CartDto cartDto) {
+        try {
+            Cart cart = cartMapper.mapToCart(cartDto);
+            cart = cartDbService.createNewCart();
+            return ResponseEntity.ok().body("Cart has been created");
+        } catch (UserNotExistException e) {
+            return ResponseEntity.badRequest().body("User doesn't exist");
+        }
+    }
 
+    @PostMapping(value = "/{cartId}/{productId}")
+    public ResponseEntity<CartDto> addProductToCart(@PathVariable Long cartId, @PathVariable Long productId) {
+        try {
+            Cart cart = cartDbService.addProductToCart(cartId, productId);
+            return ResponseEntity.ok(cartMapper.mapToCartDto(cart));
+        } catch (ProductNotExistException e) {
+            return ResponseEntity.badRequest().build();
+        }
+    }
+
+    @DeleteMapping(value = "{cartId}/{productId}")
+    public ResponseEntity<String> deleteChosenProductFromCart(@PathVariable Long cartId, @PathVariable Long productId) {
+        try {
+            Cart cart = cartDbService.deleteChosenProductFromCart(cartId, productId);
+            return ResponseEntity.ok("Chosen product has been deleted from your cart.");
+        } catch (CartNotExistException e) {
+            return ResponseEntity.badRequest().body("Cart doesn't exist");
+        } catch (ProductNotExistException e) {
+            return ResponseEntity.badRequest().body("Product doesn't exist");
+        }
+    }
 }

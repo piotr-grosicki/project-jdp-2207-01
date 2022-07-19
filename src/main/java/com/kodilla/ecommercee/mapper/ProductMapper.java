@@ -22,7 +22,7 @@ public class ProductMapper {
                 product.getProductId(),
                 product.getProductName());
     }
-
+    
     public List<ProductDto> mapToProductDtoList(final List<Product> productList) {
         return productList.stream()
                 .map(this::mapToProductDto)

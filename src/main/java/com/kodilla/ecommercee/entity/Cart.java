@@ -17,10 +17,10 @@ import java.util.List;
 public class Cart {
 
     @Id
-    //@NotNull
+    @NotNull
     @Column(name = "cart_id", unique = true)
     @GeneratedValue(strategy = GenerationType.IDENTITY)
-    private Long cart_id;
+    private Long cartId;
 
     @ManyToMany(cascade = CascadeType.ALL, mappedBy = "carts")
     private List<Product> products;
@@ -28,10 +28,7 @@ public class Cart {
     @OneToMany(mappedBy = "cart")
     private List<Order> orders;
 
-
     @Column(name = "user_id")
-    //@NotNull
-    private Long userID;
-
-
+    @NotNull
+    private Long userId;
 }
