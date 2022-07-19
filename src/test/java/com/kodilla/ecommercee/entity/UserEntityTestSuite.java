@@ -10,6 +10,7 @@ import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.boot.test.context.SpringBootTest;
 import org.springframework.test.context.junit4.SpringRunner;
 
+import java.util.ArrayList;
 import java.util.List;
 import java.util.Optional;
 
@@ -27,8 +28,8 @@ public class UserEntityTestSuite {
     @Test
     public void testSaveUserandFindUserById() {
 
-       User james = new User(1L,"JamesH","James","Howe","jameshowe@gmail.com","Chicago", true);
-       User steve = new User(2L,"SteveB","Steve","Bowie","stevebowie@gmail.com","Tampa", true);
+       User james = new User(1L,"JamesH","James","Howe","jameshowe@gmail.com","Chicago", true, new ArrayList<>());
+       User steve = new User(2L,"SteveB","Steve","Bowie","stevebowie@gmail.com","Tampa", true, new ArrayList<>());
 
 
        userRepository.save(james);
@@ -54,10 +55,10 @@ public class UserEntityTestSuite {
     @Test
     public void testFindAll() {
 
-        User james = new User(11L,"JamesW","James","Howe","jameshowe@gmail.com","Chicago", true);
-        User steve = new User(21L,"SteveB","Steve","Bowie","stevebowie@gmail.com","Tampa", true);
-        User adam = new User(31L,"AdamW","Adam","Wolf","adamwolf@gmail.com","Brooklyn", true);
-        User john = new User(41L,"JohnW","John","Smith","johnSmith@gmail.com","Brooklyn", true);
+        User james = new User(11L,"JamesW","James","Howe","jameshowe@gmail.com","Chicago", true, new ArrayList<>());
+        User steve = new User(21L,"SteveB","Steve","Bowie","stevebowie@gmail.com","Tampa", true, new ArrayList<>());
+        User adam = new User(31L,"AdamW","Adam","Wolf","adamwolf@gmail.com","Brooklyn", true, new ArrayList<>());
+        User john = new User(41L,"JohnW","John","Smith","johnSmith@gmail.com","Brooklyn", true, new ArrayList<>());
 
 
         userRepository.save(james);
@@ -76,8 +77,8 @@ public class UserEntityTestSuite {
     @Test
     public void testDeleteUserById() {
 
-        User james = new User(9L,"JamesH","James","Howe","jameshowe@gmail.com","Chicago", true);
-        User steve = new User(15L,"SteveB","Steve","Bowie","stevebowie@gmail.com","Tampa", true);
+        User james = new User(9L,"JamesH","James","Howe","jameshowe@gmail.com","Chicago", true, new ArrayList<>());
+        User steve = new User(15L,"SteveB","Steve","Bowie","stevebowie@gmail.com","Tampa", true, new ArrayList<>());
 
         userRepository.save(james);
         userRepository.save(steve);
@@ -95,14 +96,13 @@ public class UserEntityTestSuite {
         userRepository.deleteAll();
 
     }
-
     @Test
     public void testDeleteAll() {
 
-        User james = new User(5L,"JamesH","James","Howe","jameshowe@gmail.com","Chicago", true);
-        User steve = new User(6L,"SteveB","Steve","Bowie","stevebowie@gmail.com","Tampa", true);
-        User adam = new User(7L,"AdamW","Adam","Wolf","adamwolf@gmail.com","Brooklyn", true);
-        User john = new User(8L,"JohnW","John","Smith","johnSmith@gmail.com","Brooklyn", true);
+        User james = new User(5L,"JamesH","James","Howe","jameshowe@gmail.com","Chicago", true, new ArrayList<>());
+        User steve = new User(6L,"SteveB","Steve","Bowie","stevebowie@gmail.com","Tampa", true, new ArrayList<>());
+        User adam = new User(7L,"AdamW","Adam","Wolf","adamwolf@gmail.com","Brooklyn", true, new ArrayList<>());
+        User john = new User(8L,"JohnW","John","Smith","johnSmith@gmail.com","Brooklyn", true, new ArrayList<>());
 
         userRepository.save(james);
         userRepository.save(steve);
