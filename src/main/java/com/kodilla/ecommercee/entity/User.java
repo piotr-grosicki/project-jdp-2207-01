@@ -14,7 +14,7 @@ public class User {
     @Id
     @GeneratedValue(strategy = GenerationType.IDENTITY)
     @Column(name = "user_id")
-    private long id;
+    private Long id;
 
     @Column(name = "user_name")
     private String name;
@@ -30,4 +30,11 @@ public class User {
 
     @Column(name = "address")
     private String address;
+
+    @Column(name = "is_active")
+    private boolean isActive;
+
+    @ManyToOne(cascade = CascadeType.MERGE,
+            fetch = FetchType.LAZY)
+    private Order orders;
 }

@@ -4,6 +4,7 @@ package com.kodilla.ecommercee.entity;
 import lombok.*;
 import javax.persistence.*;
 import javax.validation.constraints.NotNull;
+import java.util.List;
 
 
 @Entity
@@ -16,7 +17,7 @@ public class Order {
 
     @Setter(AccessLevel.NONE)
     @Column(name = "order_id", nullable = false, unique = true)
-    @NotNull
+    //@NotNull
     @GeneratedValue(strategy = GenerationType.IDENTITY)
     @Id
     private Long order_id;
@@ -25,12 +26,11 @@ public class Order {
             fetch = FetchType.LAZY)
     private Cart cart;
 
-    @ManyToOne
-    @JoinColumn(name = "user_id")
-    private User user;
+    @OneToMany(mappedBy = "orders")
+    private List<User> users;
 
-    public Order(User user) {
-        this.user = user;
-    }
 
+    @Column(name = "user_id")
+    //@NotNull
+    private Long userID;
 }
