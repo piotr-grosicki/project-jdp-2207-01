@@ -4,7 +4,6 @@ package com.kodilla.ecommercee.entity;
 import lombok.*;
 
 import javax.persistence.*;
-import javax.validation.constraints.NotNull;
 
 @Builder
 @Entity
@@ -20,7 +19,7 @@ public class Order {
     //@NotNull
     @GeneratedValue(strategy = GenerationType.IDENTITY)
     @Id
-    private Long order_id;
+    private Long orderId;
 
     @ManyToOne(cascade = CascadeType.MERGE,
             fetch = FetchType.LAZY)
