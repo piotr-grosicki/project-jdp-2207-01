@@ -4,6 +4,7 @@ import com.kodilla.ecommercee.entity.Cart;
 import com.kodilla.ecommercee.entity.Product;
 import com.kodilla.ecommercee.exception.CartNotExistException;
 import com.kodilla.ecommercee.exception.ProductNotExistException;
+import com.kodilla.ecommercee.exception.UserNotExistException;
 import com.kodilla.ecommercee.mapper.ProductMapper;
 import com.kodilla.ecommercee.repository.CartRepository;
 import com.kodilla.ecommercee.repository.ProductRepository;
@@ -35,9 +36,10 @@ public class CartDbService {
         return products;
     }
 
-    public void createNewCart() {
+    public Cart createNewCart() throws UserNotExistException {
         Cart cart = new Cart();
         cartRepository.save(cart);
+        return cart;
     }
 
     public Cart addProductToCart(Long cartId, Long productId) throws ProductNotExistException {
@@ -45,6 +47,7 @@ public class CartDbService {
         cart.getProducts()
                 .add(productRepository.findById(productId)
                         .orElseThrow(ProductNotExistException::new));
+        cartRepository.save(cart);
         return cart;
     }
 
