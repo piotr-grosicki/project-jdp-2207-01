@@ -1,6 +1,9 @@
 package com.kodilla.ecommercee.domain;
 
+import com.kodilla.ecommercee.entity.Order;
 import lombok.*;
+
+import java.util.List;
 
 @Getter
 @Setter
@@ -14,4 +17,5 @@ public class UserDto {
     private String email;
     private String address;
     private boolean isActive;
+    private List <Order> orders;
 }

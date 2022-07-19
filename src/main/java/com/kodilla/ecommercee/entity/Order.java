@@ -24,4 +24,9 @@ public class Order {
     @ManyToOne(cascade = CascadeType.MERGE,
             fetch = FetchType.LAZY)
     private Cart cart;
+
+    @ManyToOne
+    @JoinColumn(name= "user_id")
+    private User users;
+
 }

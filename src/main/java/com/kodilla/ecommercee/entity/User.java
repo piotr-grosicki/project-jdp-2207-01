@@ -6,6 +6,7 @@ import lombok.NoArgsConstructor;
 import lombok.RequiredArgsConstructor;
 
 import javax.persistence.*;
+import java.util.List;
 
 @Entity
 @AllArgsConstructor
@@ -34,4 +35,9 @@ public class User {
 
     @Column(name = "is_active")
     private boolean isActive;
+
+    @OneToMany(cascade = CascadeType.MERGE,
+            fetch = FetchType.LAZY,
+            mappedBy = "users")
+    private List<Order> orders;
 }
