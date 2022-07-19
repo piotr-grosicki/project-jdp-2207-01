@@ -9,7 +9,7 @@ import java.util.List;
 import java.util.Optional;
 
 @Service
-public class GroupService {
+public class GroupDbService {
 
         @Autowired
         GroupRepository groupRepository;
