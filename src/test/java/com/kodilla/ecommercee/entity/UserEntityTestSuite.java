@@ -96,7 +96,6 @@ public class UserEntityTestSuite {
         userRepository.deleteAll();
 
     }
-
     @Test
     public void testDeleteAll() {
 

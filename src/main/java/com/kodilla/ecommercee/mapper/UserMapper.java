@@ -16,6 +16,7 @@ public class UserMapper {
                 userDto.getAddress(),
                 userDto.isActive(),
                 userDto.getOrders()
+
         );
     }
 
@@ -29,6 +30,7 @@ public class UserMapper {
                 user.getAddress(),
                 user.isActive(),
                 user.getOrders()
+
         );
     }
 }
